@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
-from resume_parser.parser import parse_resume
+from resume_parser.parser import parse_resume, extract_all
 import os
 
 load_dotenv()
@@ -40,10 +40,13 @@ def upload_resume():
     if extracted_text is None:
         return jsonify({"error": "Could not parse resume"}), 500
 
+    extracted_info = extract_all(extracted_text)
+
     return jsonify({
         "message": "Resume uploaded and parsed successfully",
         "filename": file.filename,
-        "extracted_text": extracted_text
+        "extracted_text": extracted_text,
+        "extracted_info": extracted_info
     })
 
 if __name__ == "__main__":

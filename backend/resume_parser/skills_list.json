@@ -1,0 +1,23 @@
+{
+  "technical_skills": [
+    "python", "sql", "java", "javascript", "typescript", "c++", "c#", "r",
+    "html", "css", "react", "node.js", "express.js", "flask", "django",
+    "power bi", "tableau", "excel", "word", "powerpoint",
+    "machine learning", "deep learning", "nlp", "computer vision",
+    "tensorflow", "pytorch", "scikit-learn", "keras", "opencv",
+    "pandas", "numpy", "matplotlib", "seaborn", "plotly",
+    "mongodb", "mysql", "postgresql", "sqlite", "oracle", "firebase",
+    "aws", "azure", "gcp", "docker", "kubernetes", "git", "github",
+    "linux", "bash", "rest api", "graphql", "spark", "hadoop"
+  ],
+  "soft_skills": [
+    "communication", "teamwork", "leadership", "problem solving",
+    "critical thinking", "time management", "adaptability",
+    "creativity", "collaboration", "attention to detail"
+  ],
+  "domain_skills": [
+    "data analysis", "data visualization", "business analysis",
+    "project management", "agile", "scrum", "digital marketing",
+    "financial analysis", "market research", "product management"
+  ]
+}
