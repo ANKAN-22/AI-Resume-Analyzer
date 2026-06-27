@@ -48,6 +48,7 @@ function UploadForm() {
         state: {
           extracted_info: extractedInfo,
           match_result: matchResponse.data.match_result,
+          suggestions: matchResponse.data.suggestions,
         },
       });
     } catch (err) {

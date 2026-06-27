@@ -2,11 +2,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AtsScore from "../components/AtsScore";
 import MissingSkills from "../components/MissingSkills";
 import SkillsChart from "../components/SkillsChart";
+import Suggestions from "../components/Suggestions";
 
 function Results() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { extracted_info, match_result } = location.state || {};
+  const { extracted_info, match_result, suggestions } = location.state || {};
 
   if (!extracted_info || !match_result) {
     return (
@@ -45,6 +46,9 @@ function Results() {
 
       {/* Skills Chart */}
       <SkillsChart skills={extracted_info.skills} />
+
+      {/* Suggestions */}
+      <Suggestions suggestions={suggestions} />
 
       {/* Matched Keywords */}
       <div style={styles.card}>
