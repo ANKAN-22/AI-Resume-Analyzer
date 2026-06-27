@@ -220,3 +220,6 @@ __marimo__/
 # Uploads and test files
 backend/uploads/
 backend/test_resume.pdf
+
+# Environment variables
+backend/.env

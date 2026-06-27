@@ -3,7 +3,9 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from resume_parser.parser import parse_resume, extract_all
 from resume_parser.matcher import calculate_ats_score
+from database import save_analysis, get_all_analyses
 import os
+from datetime import datetime, timezone
 
 load_dotenv()
 
@@ -68,9 +70,26 @@ def match_resume():
 
     match_result = calculate_ats_score(resume_info, jd_text)
 
+    # Save to MongoDB
+    analysis_data = {
+        "resume_info": resume_info,
+        "jd_text": jd_text,
+        "match_result": match_result,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+    save_analysis(analysis_data)
+
     return jsonify({
         "message": "ATS score calculated successfully",
         "match_result": match_result
+    })
+
+@app.route("/history", methods=["GET"])
+def get_history():
+    analyses = get_all_analyses()
+    return jsonify({
+        "message": "Analysis history retrieved",
+        "analyses": analyses
     })
 
 if __name__ == "__main__":
