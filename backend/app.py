@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from resume_parser.parser import parse_resume, extract_all
+from resume_parser.matcher import calculate_ats_score
 import os
 
 load_dotenv()
@@ -47,6 +48,29 @@ def upload_resume():
         "filename": file.filename,
         "extracted_text": extracted_text,
         "extracted_info": extracted_info
+    })
+
+@app.route("/match", methods=["POST"])
+def match_resume():
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    if "resume_info" not in data:
+        return jsonify({"error": "No resume info provided"}), 400
+
+    if "jd_text" not in data:
+        return jsonify({"error": "No job description provided"}), 400
+
+    resume_info = data["resume_info"]
+    jd_text = data["jd_text"]
+
+    match_result = calculate_ats_score(resume_info, jd_text)
+
+    return jsonify({
+        "message": "ATS score calculated successfully",
+        "match_result": match_result
     })
 
 if __name__ == "__main__":
