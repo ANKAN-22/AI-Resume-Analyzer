@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from resume_parser.parser import parse_resume, extract_all
+from resume_parser.suggestions import generate_suggestions
 from resume_parser.matcher import calculate_ats_score
 from database import save_analysis, get_all_analyses
 import os
@@ -79,9 +80,12 @@ def match_resume():
     }
     save_analysis(analysis_data)
 
+    suggestions = generate_suggestions(resume_info, match_result)
+
     return jsonify({
         "message": "ATS score calculated successfully",
-        "match_result": match_result
+        "match_result": match_result,
+        "suggestions": suggestions
     })
 
 @app.route("/history", methods=["GET"])
