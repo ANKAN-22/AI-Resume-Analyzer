@@ -3,6 +3,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from resume_parser.parser import parse_resume, extract_all
 from resume_parser.suggestions import generate_suggestions
+from ai_model.gemini import generate_summary, generate_cover_letter
 from resume_parser.matcher import calculate_ats_score
 from database import save_analysis, get_all_analyses
 import os
@@ -70,22 +71,28 @@ def match_resume():
     jd_text = data["jd_text"]
 
     match_result = calculate_ats_score(resume_info, jd_text)
+    suggestions = generate_suggestions(resume_info, match_result)
+    ai_summary = generate_summary(resume_info)
+    cover_letter = generate_cover_letter(resume_info, jd_text)
 
     # Save to MongoDB
     analysis_data = {
         "resume_info": resume_info,
         "jd_text": jd_text,
         "match_result": match_result,
+        "suggestions": suggestions,
+        "ai_summary": ai_summary,
+        "cover_letter": cover_letter,
         "timestamp": datetime.now(timezone.utc).isoformat()
     }
     save_analysis(analysis_data)
 
-    suggestions = generate_suggestions(resume_info, match_result)
-
     return jsonify({
         "message": "ATS score calculated successfully",
         "match_result": match_result,
-        "suggestions": suggestions
+        "suggestions": suggestions,
+        "ai_summary": ai_summary,
+        "cover_letter": cover_letter
     })
 
 @app.route("/history", methods=["GET"])
