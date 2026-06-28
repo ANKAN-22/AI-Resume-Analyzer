@@ -49,6 +49,8 @@ function UploadForm() {
           extracted_info: extractedInfo,
           match_result: matchResponse.data.match_result,
           suggestions: matchResponse.data.suggestions,
+          ai_summary: matchResponse.data.ai_summary,
+          cover_letter: matchResponse.data.cover_letter,
         },
       });
     } catch (err) {

@@ -7,8 +7,7 @@ import Suggestions from "../components/Suggestions";
 function Results() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { extracted_info, match_result, suggestions } = location.state || {};
-
+ const { extracted_info, match_result, suggestions, ai_summary, cover_letter } = location.state || {};
   if (!extracted_info || !match_result) {
     return (
       <div style={styles.noData}>
@@ -49,6 +48,22 @@ function Results() {
 
       {/* Suggestions */}
       <Suggestions suggestions={suggestions} />
+
+      {/* AI Summary */}
+      {ai_summary && (
+        <div style={styles.card}>
+          <h3 style={styles.cardTitle}>🤖 AI Generated Summary</h3>
+          <p style={{ color: "#a8b2d8", lineHeight: "1.8" }}>{ai_summary}</p>
+        </div>
+      )}
+
+      {/* Cover Letter */}
+      {cover_letter && (
+        <div style={styles.card}>
+          <h3 style={styles.cardTitle}>📝 AI Generated Cover Letter</h3>
+          <p style={{ color: "#a8b2d8", lineHeight: "1.8", whiteSpace: "pre-wrap" }}>{cover_letter}</p>
+        </div>
+      )}
 
       {/* Matched Keywords */}
       <div style={styles.card}>
