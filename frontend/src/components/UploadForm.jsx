@@ -28,7 +28,7 @@ function UploadForm() {
       formData.append("resume", resumeFile);
 
       const uploadResponse = await axios.post(
-        "http://127.0.0.1:5000/upload",
+        "https://ai-resume-analyzer-b21q.onrender.com/upload",
         formData
       );
 
@@ -36,7 +36,7 @@ function UploadForm() {
 
       // Step 2: Match with JD
       const matchResponse = await axios.post(
-        "http://127.0.0.1:5000/match",
+        "https://ai-resume-analyzer-b21q.onrender.com/match",
         {
           resume_info: extractedInfo,
           jd_text: jdText,
