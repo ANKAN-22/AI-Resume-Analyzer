@@ -171,9 +171,8 @@ Open your browser at the local development URL shown in the terminal.
 ---
 
 ## 🌐 Live Demo
-
-- **Frontend:** https://ai-resume-analyzer.vercel.app
-- **Backend API:** https://ai-resume-analyzer-api.onrender.com
+- **Frontend:** https://ai-resume-analyzer-plum-eight.vercel.app
+- **Backend API:** https://ai-resume-analyzer-b21q.onrender.com
 
 ---
 
