@@ -6,7 +6,6 @@ function Navbar() {
       <div style={styles.logo}>🤖 AI Resume Analyzer</div>
       <div style={styles.links}>
         <Link to="/" style={styles.link}>Home</Link>
-        <Link to="/results" style={styles.link}>Results</Link>
       </div>
     </nav>
   );
@@ -17,9 +16,11 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "15px 30px",
+    padding: "15px 40px",
     backgroundColor: "#1a1a2e",
     color: "white",
+    width: "100%",
+    boxSizing: "border-box",
   },
   logo: {
     fontSize: "1.4rem",

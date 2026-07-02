@@ -108,8 +108,14 @@ AI-Resume-Analyzer/
 ### Home Page — Resume Upload
 ![Home Page](screenshots/home.png)
 
-### Results Dashboard — Full Analysis
-![Results Dashboard](screenshots/results.png)
+### Results — Candidate Info, ATS Score & Skills Analysis
+![Results 1](screenshots/results.png)
+
+### Results — Suggestions & AI Generated Summary
+![Results 2](screenshots/results-1.png)
+
+### Results — AI Cover Letter & Matched Keywords
+![Results 3](screenshots/results-2.png)
 
 ---
 
